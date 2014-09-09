@@ -20,12 +20,12 @@ class CarEvaluation:
 #   if it gets "asc" return a list of car names order by ascending price
 # 	otherwise by descending price
 def sortbyprice(lst, lsort):
+    dprice = {"High":3,"Med" : 2, "Low" : 1}  # dictionary to give numeric val to price
     rev = True
-    if lsort == "des":
+    if lsort == "asc":
         rev = False
-    x = sorted(lst, key = lambda car: car.price,reverse=rev)
-    y = [car.brand for car in x]
-    return(y)  #return a value
+    x = sorted(lst, key = lambda car : dprice[car.price],reverse=rev)
+    return([car.brand for car in x])  #return a value
 
 #3. fill in this function
 #   it takes a list for input of CarEvaluation objects and a value to search for
@@ -34,7 +34,8 @@ def sortbyprice(lst, lsort):
 def searchforsafety(lst,val): #you fill in the rest
     look = [car.safety for car in lst]
     return(val in look)#return a value
-	
+
+   
 # This is the main of the program.  Expected outputs are in comments after the function calls.
 if __name__ == "__main__":	
    eval1 = CarEvaluation("Ford", "High", 2)
@@ -54,3 +55,4 @@ if __name__ == "__main__":
    print sortbyprice(L, "des"); #[Ford, GMC, Toyota]
    print searchforsafety(L, 2); #true
    print searchforsafety(L, 1); #false
+   
